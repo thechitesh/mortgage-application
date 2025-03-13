@@ -1,0 +1,78 @@
+server:
+  port: 1009
+
+spring:
+  application:
+    name: Mortgage Application
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    show-sql: false
+  h2:
+    console:
+      enabled: false
+
+
+
+#management:
+#  endpoints:
+#    web.exposure.include: *
+#    health.show-datails: always
+
+management:
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server.requests: true
+          client.requests: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+        descriptions: true
+#        pushgateway:
+#          base-url: http://localhost:9091
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    jmx:
+      exposure:
+        include: "*"
+  endpoint:
+    prometheus:
+      enabled: true
+#      access: unrestricted
+  tracing:
+    sampling:
+      probability: 1.0
+
+logging:
+  pattern:
+#    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+    correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
+  level:
+    root: INFO
+    org.springframework: INFO
+  file:
+    name: logs/spring-boot-application.log
+
+jwt:
+#  token.validity: 18000
+#  signing.key: signingkey
+#  authorities.key: roles
+#  token.prefix: Bearer
+#  header.string: Authorization
+  secretKey: 48a868a4042f634ac04a117f00a87202131dd7c46c4b32c4acb3edc5e15f4511
+
+# JWT secret key
+# node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+token:
+  secret.key: 48a868a4042f634ac04a117f00a87202131dd7c46c4b32c4acb3edc5e15f4511
+  expirationms: 3600000

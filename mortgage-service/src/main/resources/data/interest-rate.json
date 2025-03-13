@@ -1,0 +1,32 @@
+[
+  {
+    "maturityPeriod": 10,
+    "interestRate": 2.8,
+    "lastUpdate": "2025-03-08T23:47:35.123+01:00"
+  },
+  {
+    "maturityPeriod": 15,
+    "interestRate": 3,
+    "lastUpdate": "2025-03-08T23:47:35.123+01:00"
+  },
+  {
+    "maturityPeriod": 20,
+    "interestRate": 3.25,
+    "lastUpdate": "2025-03-08T23:47:35.123+01:00"
+  },
+  {
+    "maturityPeriod":25,
+    "interestRate": 3.5,
+    "lastUpdate": "2025-03-08T23:47:35.123+01:00"
+  },
+  {
+    "maturityPeriod": 30,
+    "interestRate": 3.75,
+    "lastUpdate": "2025-03-08T23:47:35.123+01:00"
+  },
+  {
+    "maturityPeriod": 40,
+    "interestRate": 4.5,
+    "lastUpdate": "2025-03-08T23:47:35.123+01:00"
+  }
+]

@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: Mortgage Checker
+  version: "1.0.0"
+servers:
+  - url: /
+paths:
+  /api/interest-rates:
+    get:
+      summary: Get Mortgage Interest Rates
+      operationId: getMortgageInterestRate
+      description: Get Mortgage Interest Rates
+      responses:
+        '200':
+          description: Analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InterestRateResponse'
+
+  /api/mortgage-check:
+    post:
+      summary: Get Mortgage Interest Rates
+      operationId: checkMortgage
+      description: Get Mortgage Interest Rates
+      requestBody:
+        description: request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MortgageRequest'
+        required: true
+      responses:
+        '200':
+          description: 'Response '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MortgageResponse'
+        400:
+          description: 'Response '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: 'Response '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    InterestRateResponse:
+      type: object
+      properties:
+        interestRates:
+          type: array
+          items:
+            $ref: '#/components/schemas/InterestRate'
+
+    InterestRate:
+      type: object
+      properties:
+        maturityPeriod:
+          type: integer
+        interestRate:
+          type: number
+          minimum: 0.01
+          maximum: 100.00
+        lastUpdate:
+          type: string
+          format: date-time
+
+    Amount:
+      type: object
+      properties:
+        value:
+          type: number
+        currency:
+          type: string
+
+    MortgageRequest:
+      type: object
+      properties:
+        income:
+          $ref: '#/components/schemas/Amount'
+        maturityPeriod:
+          type: integer
+        loanValue:
+          $ref: '#/components/schemas/Amount'
+        homeValue:
+          $ref: '#/components/schemas/Amount'
+
+    MortgageResponse:
+      type: object
+      properties:
+        feasible:
+          type: boolean
+        monthlyCost:
+          $ref: '#/components/schemas/Amount'
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
