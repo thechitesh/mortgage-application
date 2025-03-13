@@ -76,29 +76,4 @@ public class JwtService {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
     }
-
-    public String generateRefresh(Map<String, Objects> extraClaims, UserDetails userDetails) {
-        return Jwts.builder()
-                .claims().add(extraClaims).and()
-                .subject(userDetails.getUsername())
-                .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 604800000))
-                .signWith(getSignInSecretKey())
-                .compact();
-
-    }
-
-    public String getEmailFromToken(String token) {
-        return extractUserName(token);
-    }
-
-    /* public Boolean validateToken(String token) {
-        String userEmail = extractUserName(token);//todo extract userEmail from jwt Token
-        if (StringUtils.isNotEmpty(userEmail) && !isTokenExpired(token)) {
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
-            return isTokenValid(token, userDetails);
-        }
-        return false;
-    }*/
-
 }
