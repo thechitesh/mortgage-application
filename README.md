@@ -30,11 +30,13 @@ This application is build on Spring Boot Framework which uses embedded tomcat se
 - Grafana
 - Docker
 
+
 Application also provides metrics which are pushed to prometheus and can be visualised at Grafana dashboard.
 The prometheus and grafana images are added in docker-compose.yaml file.
 
 
 Starting the application.
+```
 - First checkout and do a maven build. 
 - run `docker-compose up -d` command from root directory.
 - cd mortgage-service
@@ -42,8 +44,20 @@ Starting the application.
 - Import postman collection from this location [Link](./postman/Mortgage-API.postman_collection.json)
 - Since the mortgage endpoints are secured with JWT token. You need to run the postman collection from `User-Login` folder.
 - With the login endpoint you get the authToken which will be stored in the postman env variable. This will be automatically added in subsequent calls of mortgage api.
-
+```
 To use visualisation go to the Grafana section
+
+The alternate way is to use the shell file ./start.sh present in the root directory. 
+Provide the execution right to the ./start.sh and the run it. Following commands are for your rescue. Make sure you are in root directory of the project.
+
+```
+chmod +x start.sh
+./start.sh
+```
+the service will be live on Port 1009
+
+The application also has a Dockerfile which can be used to build the docker images of the application. And later the images
+can be used to containerize the application.
 
 
 ## Prometheus & Grafana

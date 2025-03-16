@@ -1,6 +1,5 @@
 package com.myorg.mortgage.controller;
 
-//import com.myorg.mortgage.app.api.MortgageApi;
 import com.myorg.mortgage.app.api.ApiApi;
 import com.myorg.mortgage.app.model.InterestRateDto;
 import com.myorg.mortgage.app.model.InterestRateResponseDto;

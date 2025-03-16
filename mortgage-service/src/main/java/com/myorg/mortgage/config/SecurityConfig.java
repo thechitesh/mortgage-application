@@ -49,9 +49,9 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
                     .requestMatchers(HttpMethod.GET,"/actuator/**").permitAll()
-                    .requestMatchers(HttpMethod.POST,"/user/**" , "/api/v1").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/mortgage/api/**").authenticated()
-                    .requestMatchers(HttpMethod.POST, "/mortgage/api/**").authenticated()
+                    .requestMatchers(HttpMethod.POST,"/user/**" ).permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/**").authenticated()
+                    .requestMatchers(HttpMethod.POST, "/api/**").authenticated()
                     .anyRequest().permitAll()
             )
             .authenticationProvider(authenticationProvider())
