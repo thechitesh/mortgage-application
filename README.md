@@ -24,7 +24,12 @@ This application is build on Spring Boot Framework which uses embedded tomcat se
 - Java 17
 - Spring Boot 3.4.3
 - Maven
+- JWT Authentication
+- H2 DB
+- Prometheus
+- Grafana
 - Docker
+
 
 Application also provides metrics which are pushed to prometheus and can be visualised at Grafana dashboard.
 The prometheus and grafana images are added in docker-compose.yaml file.
