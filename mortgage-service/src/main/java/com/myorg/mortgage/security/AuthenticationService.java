@@ -21,32 +21,6 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    /*public AuthenticationResponse register(RegisterRequest request) {
-        var user = User.builder()
-                .firstname(request.getFirstName())
-                .lastname(request.getLastName())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole() != null ? request.getRole() : Role.ROLE_USER)
-                .build();
-        userRepository.save(user);
-        var jwtToken = jwtService.generateToken(user);
-        var refreshToken = jwtService.generateRefresh(new HashMap<>(), user);
-        return AuthenticationResponse.builder()
-                .authenticationToken(jwtToken)
-                .refreshToken(refreshToken)
-                .build();
-    }
-
-    public AuthenticationResponse login(AuthenticationRequest request) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-        var user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
-        var jwt = jwtService.generateToken(user);
-        var refreshToken = jwtService.generateRefresh(new HashMap<>(), user);
-        return AuthenticationResponse.builder().authenticationToken(jwt).refreshToken(refreshToken).build();
-    }*/
-
     public String registerUser(User user) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         User saved = userRepository.save(user.toBuilder().password(encodedPassword).build());

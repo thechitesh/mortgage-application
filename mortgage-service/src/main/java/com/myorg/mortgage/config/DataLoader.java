@@ -2,7 +2,6 @@ package com.myorg.mortgage.config;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.myorg.mortgage.model.InterestRate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
